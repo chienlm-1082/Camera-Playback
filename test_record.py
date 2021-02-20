@@ -1,4 +1,5 @@
 import cv2
+#ddda 
 import time
 cap = cv2.VideoCapture("/home/yoona/Downloads/torres.mp4")
 
@@ -6,7 +7,7 @@ past_frame = []
 print(len(past_frame))
 
 # length of playback video is 20s so length of past_image should be 20*30 = 600 elements
-
+#234
 
 cur_fps = cap.get(cv2.CAP_PROP_FPS)
 cur_fps = round(cur_fps)
@@ -18,6 +19,9 @@ print(total_frame)
 print("video length: ", round(total_frame/cur_fps)/60)
 
 frame_count = 0
+
+
+
 # cv2.namedWindow('Main Video', cv2.WINDOW_AUTOSIZE)
 
 time_playback = 20
