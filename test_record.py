@@ -1,7 +1,7 @@
 import cv2
 #abc
 import time
-cap = cv2.VideoCapture("/home/yoona/Downloads/torres.mp4")
+cap = cv2.VideoCapture(0)
 
 past_frame = []
 print(len(past_frame))
@@ -19,7 +19,6 @@ print(total_frame)
 print("video length: ", round(total_frame/cur_fps)/60)
 
 frame_count = 0
-
 
 
 # cv2.namedWindow('Main Video', cv2.WINDOW_AUTOSIZE)
@@ -41,12 +40,15 @@ while cap.isOpened():
   if k == 32:
     cv2.destroyWindow("Main video")
     cv2.namedWindow('Playback 10s', cv2.WINDOW_AUTOSIZE)
+    out = cv2.VideoWriter('outpy'+str(round(time.time(), 0))+'.mp4',cv2.VideoWriter_fourcc('M','J','P','G'), cur_fps, (640,480))
     for i in range(len(past_frame)):
+      out.write(past_frame[i])
       cv2.imshow("Playback 10s", past_frame[i])
       print("Playback frame {}".format(i))
       cv2.waitKey(int(800/cur_fps))
     cv2.destroyWindow("Playback 10s")
     cv2.namedWindow("Main video")  
+    out.release()
     pass
   elif k == ord('q'):
     break
